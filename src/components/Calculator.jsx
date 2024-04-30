@@ -17,7 +17,7 @@ export default function Calculator() {
                 <Form.Label>Portion: </Form.Label>
                 <Form.Control size="lg" type="text" placeholder="My portion weight" />
             </Form.Group>
-            <Button variant="primary">
+            <Button variant="primary" type="submit">
                 Calculate
             </Button>
         </Form>
