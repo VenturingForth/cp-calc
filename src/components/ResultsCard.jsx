@@ -1,10 +1,10 @@
 import { Card } from "react-bootstrap";
 
-export default function ResultsCard(){
+export default function ResultsCard(cpResult){
     return (
         <Card className="card-results">
             <Card.Body>
-                This meal has 0 CP.
+                This meal has ${cpResult} CP.
             </Card.Body>
         </Card>
     )
