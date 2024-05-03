@@ -1,4 +1,4 @@
-const { cpCalc } = require("../utility/cpCalc.js")
+import { cpCalc } from "../utility/cpCalc.js";
 
 describe("CP Calc Testing", () => {
     test("Should return 0 if given no arguments", () => {
