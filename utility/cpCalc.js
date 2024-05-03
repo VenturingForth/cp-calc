@@ -1,4 +1,4 @@
-function cpCalc(unitWeight = 100, carbs = 0, portion = 0){
+export function cpCalc(unitWeight = 100, carbs = 0, portion = 0){
     const totalCarbs = carbs / unitWeight * portion;
     const cp = totalCarbs / 10;
     return convertToHalves(cp);
@@ -44,5 +44,3 @@ function roundCpUp(cpString){
     result += (parseInt(splitCpString[0])) + 1;
     return result;
 }
-
-module.exports = { cpCalc }
