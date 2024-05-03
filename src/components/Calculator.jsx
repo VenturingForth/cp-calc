@@ -11,9 +11,6 @@ export default function Calculator() {
 
     function handleButtonClick(){
         event.preventDefault();
-        setUnitWeight(event.target.form[0].value);
-        setCarbWeight(event.target.form[1].value);
-        setPortionWeight(event.target.form[2].value);
         setCpResult(cpCalc(unitWeight, carbWeight, portionWeight));
     }
 
@@ -22,15 +19,33 @@ export default function Calculator() {
         <Form>
             <Form.Group>
                 <Form.Label>Unit Weight (grams): </Form.Label>
-                <Form.Control id="unitWeightInput" size="lg" type="text" placeholder="Unit weight of food" />
+                <Form.Control 
+                    id="unitWeightInput" 
+                    size="lg" 
+                    type="text" 
+                    placeholder="Unit weight of food" 
+                    onChange={e => setUnitWeight(e.target.value)} 
+                />
             </Form.Group>
             <Form.Group>
                 <Form.Label>Carbohydrates (grams): </Form.Label>
-                <Form.Control id="carbInput" size="lg" type="text" placeholder="Carbohydrates weight" />
+                <Form.Control 
+                    id="carbInput" 
+                    size="lg" 
+                    type="text" 
+                    placeholder="Carbohydrates weight" 
+                    onChange={e => setCarbWeight(e.target.value)} 
+                />
             </Form.Group>
             <Form.Group>
                 <Form.Label>Portion (grams): </Form.Label>
-                <Form.Control id="portionInput" size="lg" type="text" placeholder="My portion weight" />
+                <Form.Control 
+                    id="portionInput" 
+                    size="lg" 
+                    type="text" 
+                    placeholder="My portion weight" 
+                    onChange={e => setPortionWeight(e.target.value)}
+                />
             </Form.Group>
             <Button variant="primary" type="submit" onClick={() => {handleButtonClick()}} >
                 Calculate
