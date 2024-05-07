@@ -11,39 +11,56 @@ export default function Calculator() {
         portionWeight: 0
     })
 
+    const [ validated, setValidated ] = useState(false);
     const [ isError, setIsError ] = useState(false);
     const [ errors, setErrors ] = useState({});
-    
+
     function handleChange(event){
         const { name, value } = event.target;
         if (value < 0){
+            setIsError(true);
             setErrors({...errors,
                 [name]: "You must enter a number greater than zero."
             });
-            console.log(errors);
+        } else if (name === "carbWeight" && value > formData.unitWeight){
+            setIsError(true);
+            setErrors({
+                ...errors,
+                carbWeight: "Carbohydrate weight must be equal to or less than the unit weight."
+            })
         } else {
-            setErrors({...errors,
-                [name]: undefined
-            });
-            if (Object.keys(errors).length === 0) {
-                setIsError(false);
+            if ( errors[name] ){
+                setErrors({
+                    ...errors,
+                    [name]: null
+                })
             }
             setFormData({...formData,
                 [name]: value
             });
-            console.log(formData);
-            console.log(errors);
         }
+        if (!errors.unitWeight && !errors.carbWeight && !errors.portionWeight){
+            setIsError(false);
+        }
+        console.log(formData);
+        console.log(errors);
+        console.log(isError);
     }
 
     function handleSubmit(event){
         event.preventDefault();
-        setCpResult(cpCalc(formData));
+        const form = event.currentTarget;
+        if (isError){
+            event.stopPropagation();
+        } else {
+            setValidated(true);
+            setCpResult(cpCalc(formData));
+        }
     }
 
     return (
         <>
-        <Form>
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Form.Group>
                 <Form.Label>Unit Weight (grams): </Form.Label>
                 <Form.Control 
@@ -52,8 +69,9 @@ export default function Calculator() {
                     type="number" 
                     placeholder="Unit weight of food" 
                     onChange={() => handleChange(event)}
+                    isInvalid={ errors.unitWeight }
                 />
-                {errors.unitWeight && <Form.Text className="error">{errors.unitWeight}</Form.Text>}
+                <Form.Control.Feedback type="invalid">{ errors.unitWeight }</Form.Control.Feedback>
             </Form.Group>
             <Form.Group>
                 <Form.Label>Carbohydrates (grams): </Form.Label>
@@ -62,9 +80,10 @@ export default function Calculator() {
                     name="carbWeight" 
                     type="number" 
                     placeholder="Carbohydrates weight" 
-                    onChange={() => handleChange(event)} 
+                    onChange={() => handleChange(event)}
+                    isInvalid={ errors.carbWeight }
                 />
-                {errors.carbWeight && <Form.Text className="error">{errors.carbWeight}</Form.Text>}
+                <Form.Control.Feedback type="invalid">{ errors.carbWeight }</Form.Control.Feedback>
             </Form.Group>
             <Form.Group>
                 <Form.Label>Portion (grams): </Form.Label>
@@ -74,10 +93,11 @@ export default function Calculator() {
                     type="number" 
                     placeholder="My portion weight" 
                     onChange={() => handleChange(event)}
+                    isInvalid={ errors.portionWeight }
                 />
-                {errors.portionWeight && <Form.Text className="error">{errors.portionWeight}</Form.Text>}
+                <Form.Control.Feedback type="invalid">{ errors.portionWeight }</Form.Control.Feedback>
             </Form.Group>
-            <Button variant="primary" type="submit" onClick={() => {handleSubmit(event)}} >
+            <Button variant="primary" type="submit" >
                 Calculate
             </Button>
         </Form>
