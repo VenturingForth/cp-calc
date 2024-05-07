@@ -1,5 +1,4 @@
 export function cpCalc({unitWeight, carbWeight, portionWeight}){
-    console.log(unitWeight, carbWeight, portionWeight);
     const totalCarbs = carbWeight / unitWeight * portionWeight;
     const cp = totalCarbs / 10;
     return convertToHalves(cp);
