@@ -5,9 +5,6 @@ import { cpCalc } from "../../utility/cpCalc.js";
 
 export default function Calculator() {
     const [ cpResult, setCpResult ] = useState(0);
-    // const [ unitWeight, setUnitWeight ] = useState(0);
-    // const [ carbWeight, setCarbWeight ] = useState(0);
-    // const [ portionWeight, setPortionWeight ] = useState(0);
     const [ formData, setFormData ] = useState({
         unitWeight: 0,
         carbWeight: 0,
@@ -86,6 +83,7 @@ export default function Calculator() {
         </Form>
         <ResultsCard 
             cpResult={cpResult}
+            isError={isError}
         />
         </>
     )
