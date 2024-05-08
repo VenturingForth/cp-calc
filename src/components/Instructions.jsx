@@ -30,7 +30,7 @@ export default function Instructions(){
                             <tr>
                                 <th className="td td--example-hilight">Typical Values</th>
                                 <th>Per 100g</th>
-                                <th className="td td--example-hilight">Per Serving Size (40g)</th>
+                                <th className="td td--example-hilight">Per Serving Size (48g)</th>
                             </tr>
                         </thead>
                         <tbody>
