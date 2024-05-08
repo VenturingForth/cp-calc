@@ -2,6 +2,7 @@ import { Form, Button } from "react-bootstrap";
 import ResultsCard from "./ResultsCard";
 import { useState } from "react";
 import { cpCalc } from "../../utility/cpCalc.js";
+import { checkFormValidity } from "../../utility/checkFormValidity.js";
 
 export default function Calculator() {
     const [ cpResult, setCpResult ] = useState(0);
@@ -17,34 +18,46 @@ export default function Calculator() {
 
     function handleChange(event){
         const { name, value } = event.target;
-        if (value < 0){
-            setIsError(true);
-            setErrors({...errors,
-                [name]: "You must enter a number greater than zero."
-            });
-        } else if (name === "carbWeight" && value > formData.unitWeight){
-            setIsError(true);
-            setErrors({
-                ...errors,
-                carbWeight: "Carbohydrate weight must be equal to or less than the unit weight."
-            })
-        } else {
-            if ( errors[name] ){
-                setErrors({
-                    ...errors,
-                    [name]: null
-                })
-            }
-            setFormData({...formData,
-                [name]: value
-            });
-        }
-        if (!errors.unitWeight && !errors.carbWeight && !errors.portionWeight){
-            setIsError(false);
-        }
+        console.log(name, value);
+        setFormData({
+            ...formData,
+            [name]: parseInt(value)
+        })
+
         console.log(formData);
-        console.log(errors);
-        console.log(isError);
+
+        const validityCheck = checkFormValidity(formData);
+        setIsError(validityCheck.isError);
+        setErrors(validityCheck.errors);
+
+        // if (value < 0){
+        //     setIsError(true);
+        //     setErrors({...errors,
+        //         [name]: "You must enter a number greater than zero."
+        //     });
+        // } else if (name === "carbWeight" && value > formData.unitWeight){
+        //     setIsError(true);
+        //     setErrors({
+        //         ...errors,
+        //         carbWeight: "Carbohydrate weight must be equal to or less than the unit weight."
+        //     })
+        // } else {
+        //     if ( errors[name] ){
+        //         setErrors({
+        //             ...errors,
+        //             [name]: null
+        //         })
+        //     }
+        //     setFormData({...formData,
+        //         [name]: value
+        //     });
+        // }
+        // if (!errors.unitWeight && !errors.carbWeight && !errors.portionWeight){
+        //     setIsError(false);
+        // }
+        // console.log(formData);
+        // console.log(errors);
+        // console.log(isError);
     }
 
     function handleSubmit(event){
@@ -67,8 +80,9 @@ export default function Calculator() {
                     required
                     name="unitWeight"
                     type="number" 
+                    value={formData.unitWeight}
                     placeholder="Unit weight of food" 
-                    onChange={() => handleChange(event)}
+                    onChange={(event) => handleChange(event)}
                     isInvalid={ errors.unitWeight }
                 />
                 <Form.Control.Feedback type="invalid">{ errors.unitWeight }</Form.Control.Feedback>
@@ -79,8 +93,9 @@ export default function Calculator() {
                     required
                     name="carbWeight" 
                     type="number" 
+                    value={formData.carbWeight}
                     placeholder="Carbohydrates weight" 
-                    onChange={() => handleChange(event)}
+                    onChange={(event) => handleChange(event)}
                     isInvalid={ errors.carbWeight }
                 />
                 <Form.Control.Feedback type="invalid">{ errors.carbWeight }</Form.Control.Feedback>
@@ -91,8 +106,9 @@ export default function Calculator() {
                     required
                     name="portionWeight" 
                     type="number" 
+                    value={formData.portionWeight}
                     placeholder="My portion weight" 
-                    onChange={() => handleChange(event)}
+                    onChange={(event) => handleChange(event)}
                     isInvalid={ errors.portionWeight }
                 />
                 <Form.Control.Feedback type="invalid">{ errors.portionWeight }</Form.Control.Feedback>

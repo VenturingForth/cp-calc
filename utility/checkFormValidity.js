@@ -10,6 +10,12 @@ export function checkFormValidity(formData){
         }
     }
 
+    console.log(typeof formData.carbWeight);
+    console.log(typeof formData.unitWeight);
+
+
+    console.log(`${formData.carbWeight} > ${formData.unitWeight} = ${formData.carbWeight > formData.unitWeight}`)
+
     if (formData.carbWeight > formData.unitWeight){
         validityCheck.errors.carbWeight = "Carbohydrate weight must be equal to or less than the unit weight."
     }
@@ -17,6 +23,8 @@ export function checkFormValidity(formData){
     if (Object.keys(validityCheck.errors).length){
         validityCheck.isError = true;
     }
+
+    console.log(validityCheck, "<-- inside validity check function")
 
     return validityCheck;
 }
