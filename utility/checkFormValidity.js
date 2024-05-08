@@ -3,7 +3,7 @@ export function checkFormValidity(formData){
         errors: {},
         isError: false
     }
-
+    
     for (let key in formData){
         if (formData[key] < 0){
             validityCheck.errors[key] = "You must enter a number greater than zero."
