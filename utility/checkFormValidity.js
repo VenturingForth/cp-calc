@@ -1,13 +1,22 @@
 export function checkFormValidity(formData){
-    const errors = {};
+    const validityCheck = {
+        errors: {},
+        isError: false
+    }
+
     for (let key in formData){
         if (formData[key] < 0){
-            errors[key] = "You must enter a number greater than zero."
+            validityCheck.errors[key] = "You must enter a number greater than zero."
         }
     }
+
     if (formData.carbWeight > formData.unitWeight){
-        errors.carbWeight = "Carbohydrate weight must be equal to or less than the unit weight."
+        validityCheck.errors.carbWeight = "Carbohydrate weight must be equal to or less than the unit weight."
     }
-    console.log(errors);
-    return errors;
+
+    if (Object.keys(validityCheck.errors).length){
+        validityCheck.isError = true;
+    }
+
+    return validityCheck;
 }
