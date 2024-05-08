@@ -26,7 +26,7 @@ export default function Calculator() {
         const { name, value } = event.target;
         setFormData({
             ...formData,
-            [name]: parseInt(value)
+            [name]: parseFloat(value)
         })
     }
 
@@ -50,6 +50,7 @@ export default function Calculator() {
                     required
                     name="unitWeight"
                     type="number" 
+                    step="0.1"
                     placeholder="Unit weight of food" 
                     onChange={(event) => handleChange(event)}
                     isInvalid={ errors.unitWeight }
@@ -62,6 +63,7 @@ export default function Calculator() {
                     required
                     name="carbWeight" 
                     type="number" 
+                    step="0.1"
                     placeholder="Carbohydrates weight" 
                     onChange={(event) => handleChange(event)}
                     isInvalid={ errors.carbWeight }
@@ -74,6 +76,7 @@ export default function Calculator() {
                     required
                     name="portionWeight" 
                     type="number" 
+                    step="0.1"
                     placeholder="My portion weight" 
                     onChange={(event) => handleChange(event)}
                     isInvalid={ errors.portionWeight }
