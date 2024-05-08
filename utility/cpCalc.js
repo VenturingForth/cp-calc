@@ -1,5 +1,5 @@
-export function cpCalc(unitWeight = 100, carbs = 0, portion = 0){
-    const totalCarbs = carbs / unitWeight * portion;
+export function cpCalc({unitWeight, carbWeight, portionWeight}){
+    const totalCarbs = carbWeight / unitWeight * portionWeight;
     const cp = totalCarbs / 10;
     return convertToHalves(cp);
 }

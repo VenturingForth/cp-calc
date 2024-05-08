@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Card } from "react-bootstrap";
 
-export default function ResultsCard({ cpResult }){
+export default function ResultsCard({ cpResult, isError }){
     return (
         <Card className="card-results" >
             <Card.Body>
