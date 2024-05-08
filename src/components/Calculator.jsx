@@ -26,7 +26,7 @@ export default function Calculator() {
         const { name, value } = event.target;
         setFormData({
             ...formData,
-            [name]: parseInt(value)
+            [name]: parseFloat(value)
         })
     }
 
