@@ -1,0 +1,22 @@
+body {
+    padding: 10px;
+}
+
+.header {
+    background-color: teal;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.formInput {
+    padding: 0 10px 0 10px;
+}
+
+.portionInput {
+    padding-bottom: 10px;
+}
+
+.btn-calculate {
+    background-color: teal;
+}

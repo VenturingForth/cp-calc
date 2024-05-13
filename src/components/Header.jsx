@@ -1,5 +1,5 @@
 export default function Header() {
     return (
-        <h1>CP Calc</h1>
+        <h1 className="header">CP Calc</h1>
     )
 }

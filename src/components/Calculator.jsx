@@ -44,7 +44,7 @@ export default function Calculator() {
     return (
         <>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
-            <Form.Group>
+            <Form.Group className="formInput">
                 <Form.Label>Unit Weight (grams): </Form.Label>
                 <Form.Control 
                     required
@@ -57,7 +57,7 @@ export default function Calculator() {
                 />
                 <Form.Control.Feedback type="invalid">{ errors.unitWeight }</Form.Control.Feedback>
             </Form.Group>
-            <Form.Group>
+            <Form.Group className="formInput">
                 <Form.Label>Carbohydrates (grams): </Form.Label>
                 <Form.Control 
                     required
@@ -70,7 +70,7 @@ export default function Calculator() {
                 />
                 <Form.Control.Feedback type="invalid">{ errors.carbWeight }</Form.Control.Feedback>
             </Form.Group>
-            <Form.Group>
+            <Form.Group className="formInput portionInput">
                 <Form.Label>Portion (grams): </Form.Label>
                 <Form.Control 
                     required
@@ -83,9 +83,11 @@ export default function Calculator() {
                 />
                 <Form.Control.Feedback type="invalid">{ errors.portionWeight }</Form.Control.Feedback>
             </Form.Group>
-            <Button variant="primary" type="submit" >
-                Calculate
-            </Button>
+            <div className="d-grid">
+                <Button variant="primary" type="submit" className="btn-calculate">
+                    Calculate
+                </Button>
+            </div>
         </Form>
         <ResultsCard 
             cpResult={cpResult}
