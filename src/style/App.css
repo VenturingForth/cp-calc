@@ -1,0 +1,42 @@
+/* Default styling (mobile first) */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background-color: teal;
+    color: white;
+    text-align: center;
+    padding: 20px 10px 10px 10px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.formInput {
+    padding: 10px;
+    font-size: large;
+    font-weight: 600;
+}
+
+.portionInput {
+    padding-bottom: 10px;
+}
+
+.btn-calculate {
+    background-color: teal;
+    margin:0 10px 0 10px;
+}
+
+.card-results {
+    margin: 10px;
+    border: 2px teal solid;
+    background-color: paleturquoise;
+    text-align: center;
+}
+
+/* Tablet Styling */
+
+/* Desktop Styling */
+@media screen and (min-width: 900px) {
+    
+}
