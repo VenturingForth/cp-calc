@@ -42,7 +42,7 @@ export default function Calculator() {
     }
 
     return (
-        <>
+        <section>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Form.Group className="formInput">
                 <Form.Label>Unit Weight (grams): </Form.Label>
@@ -93,6 +93,6 @@ export default function Calculator() {
             cpResult={cpResult}
             isError={isError}
         />
-        </>
+        </section>
     )
 }

@@ -12,13 +12,11 @@ export default function ResultsCard({ cpResult, isError }){
     }, [isError, cpResult])
 
     return (
-        <section>
-            <Card className="card-results" >
-                <Card.Body>
-                    <h3>Result:</h3>
-                    {resultMessage}
-                </Card.Body>
-            </Card>
-        </section>
+        <Card className="card-results" >
+            <Card.Body>
+                <h3>Result:</h3>
+                {resultMessage}
+            </Card.Body>
+        </Card>
     )
 }
